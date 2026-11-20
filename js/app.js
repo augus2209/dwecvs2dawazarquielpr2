@@ -207,3 +207,15 @@ function cancelar() {
   mostrarMensaje("Cotización cancelada. El histórico no ha cambiado.", "");
 }
 
+// TODO A13: tema oscuro/claro con persistencia localStorage.
+function alternarTema() {
+  const actual = document.documentElement.getAttribute("data-theme");
+  const nuevo = actual === "oscuro" ? "claro" : "oscuro";
+  document.documentElement.setAttribute("data-theme", nuevo);
+  try {
+    localStorage.setItem(PREFIJO_STORAGE + "modo", nuevo);
+  } catch (error) {
+    mostrarMensaje("No se ha podido recordar el tema.", "error");
+  }
+}
+
