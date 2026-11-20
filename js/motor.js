@@ -85,3 +85,9 @@ function calcularRecargo(subtotal, porcentaje) {
   return Math.round(subtotal * porcentaje / 100);;
 }
 
+// TODO M5: DWEC-IDENTIFICADOR-0001 (secuencia de cuatro cifras como mínimo).
+function construirReferencia(identificador, contador) {
+  return `DWEC-${identificador.toUpperCase()}-${String(contador).
+  padStart(4, "0")}`;
+}
+
