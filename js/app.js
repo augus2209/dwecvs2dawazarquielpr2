@@ -107,3 +107,10 @@ function vaciarResumenCotizacion() {
   $("#confirmar").prop("disabled", true);
 }
 
+// TODO A7: actualizar estado y habilitar Confirmar SOLO en estado COTIZADA.
+function cambiarEstado(nuevo) {
+  estado = nuevo;
+  $("#estado").text(ETIQUETAS_ESTADO[nuevo] || nuevo);
+  $("#confirmar").prop("disabled", estado !== "COTIZADA");
+}
+
