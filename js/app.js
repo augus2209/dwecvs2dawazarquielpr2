@@ -28,3 +28,14 @@ const DESCRIPCION_POLITICA = [
 function mostrarMensaje(texto, tipo) {
   $("#mensaje").removeClass("error exito").addClass(tipo || "").text(texto);
 }
+// TODO A1: mostrar los datos derivados del perfil en la cabecera.
+function mostrarPerfil() {
+  $("#nombrePerfil").text(`${PERFIL.identificador} · ${PERFIL.tema}`);
+  $("#descripcionPerfil").text(PERFIL.descripcion);
+  $("#etiquetaCodigo").text(`Semilla ${SEMILLA}`);
+  $("#etiquetaVariante").text(`Política ${"ABCD"[VARIANTE]} (variante ${VARIANTE})`);
+  $("#etiquetaLimite").text(`Máximo ${MAX_UNIDADES} unidades`);
+  $("#etiquetaRecargo").text(`Recargo ${RECARGO_PORCENTAJE} %`);
+  $("#etiquetaTiempo").text(`${SEGUNDOS_VALIDEZ} s para confirmar`);
+}
+
