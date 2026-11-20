@@ -269,3 +269,12 @@ function restaurarTurno() {
   }
 }
 
+function guardarTurno() {
+  try {
+    sessionStorage.setItem(PREFIJO_STORAGE + "turno", $("#turno").val());
+  } catch (error) {
+  }
+}
+
+
+
