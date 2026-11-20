@@ -50,7 +50,7 @@ function validarSolicitud(servicio, cantidadTexto, turno, limite, tema) {
   if (tema === "cine" && servicio === "premium" && n % 2 !== 0) {
     return "En cine, el servicio premium exige una cantidad par de plazas.";
   }
-  return "Pendiente de implementar validación.";
+  return "";
 }
 
 // TODO M3: aplicar EXACTAMENTE la política que corresponda a variante (0-3).
