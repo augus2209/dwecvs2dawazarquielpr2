@@ -195,3 +195,15 @@ function confirmar() {
   mostrarMensaje(`Presupuesto confirmado: ${euros(totalPendiente)}. Referencia ${ultimaReferencia}.`, "exito");
 }
 
+// TODO A12: cancelar cotización sin alterar histórico confirmado.
+function cancelar() {
+  if (estado !== "COTIZADA") {
+    mostrarMensaje("No hay ninguna cotización activa para cancelar.", "");
+    return;
+  }
+  detenerReloj();
+  vaciarResumenCotizacion();
+  cambiarEstado("CANCELADA");
+  mostrarMensaje("Cotización cancelada. El histórico no ha cambiado.", "");
+}
+
