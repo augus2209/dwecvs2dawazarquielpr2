@@ -229,3 +229,13 @@ function restaurarTema() {
   }
 }
 
+function reiniciarHistorico() {
+  if (!window.confirm("¿Seguro que quieres reiniciar el histórico? Se pondrá todo a cero.")) return;
+  operaciones = 0;
+  acumulado = 0;
+  ultimaReferencia = "—";
+  guardarHistorico();
+  actualizarResumen();
+  mostrarMensaje("Histórico reiniciado.", "");
+}
+
