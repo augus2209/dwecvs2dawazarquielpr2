@@ -51,3 +51,27 @@ function actualizarResumen() {
   }
 }
 
+// TODO A3: leer los tres valores de localStorage de este perfil, sanearlos,
+// y llamar a actualizarResumen(). Si no existen, usar 0, 0, "—".
+function recuperarHistorico() {
+  let ops = 0;
+  let acum = 0;
+  let ref = "—";
+  try {
+    const o = Number(localStorage.getItem(PREFIJO_STORAGE + "operaciones"));
+    const a = Number(localStorage.getItem(PREFIJO_STORAGE + "acumulado"));
+    const r = localStorage.getItem(PREFIJO_STORAGE + "ultimaReferencia");
+    if (Number.isInteger(o) && o >= 0) ops = o;
+    if (Number.isInteger(a) && a >= 0) acum = a;
+    if (typeof r === "string" && r.startsWith("DWEC-")) ref = r;
+  } catch (error) {
+    ops = 0;
+    acum = 0;
+    ref = "—";
+  }
+  operaciones = ops;
+  acumulado = acum;
+  ultimaReferencia = ref;
+  actualizarResumen();
+}
+
