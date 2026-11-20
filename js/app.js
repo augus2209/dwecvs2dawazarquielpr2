@@ -138,3 +138,40 @@ function actualizarCuentaAtras() {
   $("#temporizador").text(`${restante} s`);
 }
 
+// TODO A10: validar, calcular subtotal/descuento/recargo/total en céntimos,
+// mostrar desglose, iniciar cuenta atrás y pasar a COTIZADA.
+function cotizar() {
+  const servicio = $("#servicio").val();
+  const cantidadTexto = $("#cantidad").val();
+  const turno = $("#turno").val();
+
+  const error = validarSolicitud(servicio, cantidadTexto, turno, MAX_UNIDADES, PERFIL.tema);
+  if (error !== "") {
+    detenerReloj();
+    vaciarResumenCotizacion();
+    cambiarEstado("SIN_COTIZACION");
+    mostrarMensaje(error, "error");
+    return;
+  }
+
+  const cantidad = Number(String(cantidadTexto).trim());
+  const subtotal = precioCentimos(servicio) * cantidad;
+  const descuento = calcularDescuento(subtotal, cantidad, servicio, turno, VARIANTE);
+  const recargo = calcularRecargo(subtotal, RECARGO_PORCENTAJE);
+  const total = subtotal - descuento + recargo;
+
+  totalPendiente = total;
+  $("#subtotal").text(euros(subtotal));
+  $("#descuento").text(`−${euros(descuento)}`);
+  $("#recargo").text(`+${euros(recargo)}`);
+  $("#total").text(euros(total));
+  $("#razonDescuento").text(`Política ${DESCRIPCION_POLITICA[VARIANTE]}`);
+
+  detenerReloj();
+  cambiarEstado("COTIZADA");
+  finCotizacion = Date.now() + SEGUNDOS_VALIDEZ * 1000;
+  idIntervalo = setInterval(actualizarCuentaAtras, 250);
+  actualizarCuentaAtras();
+  mostrarMensaje(`Cotización correcta. Tienes ${SEGUNDOS_VALIDEZ} segundos para confirmar.`, "exito");
+}
+
