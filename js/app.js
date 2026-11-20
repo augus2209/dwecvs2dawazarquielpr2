@@ -39,3 +39,15 @@ function mostrarPerfil() {
   $("#etiquetaTiempo").text(`${SEGUNDOS_VALIDEZ} s para confirmar`);
 }
 
+// TODO A2: actualizar los tres indicadores de operaciones confirmadas.
+function actualizarResumen() {
+  $("#operaciones").text(operaciones);
+  $("#acumulado").text(euros(acumulado));
+  $("#ultima").text(ultimaReferencia);
+  if (ultimaReferencia === "—") {
+    $("#referencia").text("Todavía no hay operación confirmada.");
+  } else {
+    $("#referencia").text(`Última referencia: ${ultimaReferencia}`);
+  }
+}
+
