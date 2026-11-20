@@ -219,3 +219,13 @@ function alternarTema() {
   }
 }
 
+function restaurarTema() {
+  try {
+    const guardado = localStorage.getItem(PREFIJO_STORAGE + "modo");
+    if (guardado === "claro" || guardado === "oscuro") {
+      document.documentElement.setAttribute("data-theme", guardado);
+    }
+  } catch (error) {
+  }
+}
+
