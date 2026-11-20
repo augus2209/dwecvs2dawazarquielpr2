@@ -259,3 +259,13 @@ $(document).ready(function () {
   });
 });
 
+function restaurarTurno() {
+  try {
+    const guardado = sessionStorage.getItem(PREFIJO_STORAGE + "turno");
+    if (guardado === "manana" || guardado === "tarde") {
+      $("#turno").val(guardado);
+    }
+  } catch (error) {
+  }
+}
+
