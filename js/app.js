@@ -239,3 +239,23 @@ function reiniciarHistorico() {
   mostrarMensaje("Histórico reiniciado.", "");
 }
 
+$(document).ready(function () {
+  mostrarPerfil();
+  restaurarTema();
+  recuperarHistorico();
+  vaciarResumenCotizacion();
+  cambiarEstado("SIN_COTIZACION");
+
+  $("#formPresupuesto").on("submit", function (evento) {
+    evento.preventDefault();
+    cotizar();
+  });
+  $("#confirmar").on("click", confirmar);
+  $("#cancelar").on("click", cancelar);
+  $("#cambiarTema").on("click", alternarTema);
+  $("#reiniciar").on("click", reiniciarHistorico);
+  $("#servicio, #cantidad, #turno").on("input change", function () {
+    invalidarCotizacion("Has cambiado un dato: la cotización anterior ya no es válida. Vuelve a cotizar.");
+  });
+});
+
