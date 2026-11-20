@@ -114,3 +114,12 @@ function cambiarEstado(nuevo) {
   $("#confirmar").prop("disabled", estado !== "COTIZADA");
 }
 
+// TODO A8: invalidar una cotización activa si cambian campos del formulario.
+function invalidarCotizacion(motivo) {
+  if (estado !== "COTIZADA") return;
+  detenerReloj();
+  vaciarResumenCotizacion();
+  cambiarEstado("INVALIDADA");
+  mostrarMensaje(motivo, "error");
+}
+
