@@ -75,3 +75,14 @@ function recuperarHistorico() {
   actualizarResumen();
 }
 
+// TODO A4: guardar en localStorage operaciones, acumulado y ultimaReferencia.
+function guardarHistorico() {
+  try {
+    localStorage.setItem(PREFIJO_STORAGE + "operaciones", String(operaciones));
+    localStorage.setItem(PREFIJO_STORAGE + "acumulado", String(acumulado));
+    localStorage.setItem(PREFIJO_STORAGE + "ultimaReferencia", ultimaReferencia);
+  } catch (error) {
+    mostrarMensaje("No se ha podido guardar el histórico en este navegador.", "error");
+  }
+}
+
