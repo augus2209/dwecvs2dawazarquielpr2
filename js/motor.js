@@ -80,3 +80,8 @@ function calcularDescuento(subtotal, cantidad, servicio, turno, variante) {
 
 }
 
+// TODO M4: calcular el recargo porcentual sobre el SUBTOTAL, con redondeo.
+function calcularRecargo(subtotal, porcentaje) {
+  return Math.round(subtotal * porcentaje / 100);;
+}
+
