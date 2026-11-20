@@ -278,3 +278,10 @@ function guardarTurno() {
 
 
 
+$(document).ready(function () {
+  mostrarPerfil();
+  // TODO A14: conectar submit, click, input/change (invalidación), tema y reset.
+
+  // TODO A15: recuperar turno en sessionStorage y conservarlo en esta pestaña.
+  // Importante: .on('submit') requiere preventDefault() para no recargar la página.
+});
