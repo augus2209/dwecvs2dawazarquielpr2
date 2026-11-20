@@ -53,3 +53,30 @@ function validarSolicitud(servicio, cantidadTexto, turno, limite, tema) {
   return "Pendiente de implementar validación.";
 }
 
+// TODO M3: aplicar EXACTAMENTE la política que corresponda a variante (0-3).
+// Trabajar siempre en céntimos y aplicar Math.round cuando haya porcentaje.
+function calcularDescuento(subtotal, cantidad, servicio, turno, variante) {
+  let porcentaje = 0;
+  switch (variante) {
+    case 0:
+      if (cantidad >= 7) porcentaje = 13;
+      else if (cantidad >= 4) porcentaje = 8;
+      break;
+    case 1:
+      if (turno === "tarde") porcentaje += 9;
+      if (cantidad >= 5) porcentaje += 4;
+      break;
+    case 2:
+      if (servicio === "premium") porcentaje = 12;
+      else if (cantidad >= 6) porcentaje = 6;
+      break;
+    case 3: {
+      const descuento = Math.floor(cantidad / 2) * 175;
+      const tope = Math.floor(subtotal * 20 / 100);
+      return Math.min(descuento, tope);
+    }
+  }
+  return Math.round(subtotal * porcentaje / 100);
+
+}
+
