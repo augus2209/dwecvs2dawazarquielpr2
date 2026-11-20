@@ -95,3 +95,15 @@ function detenerReloj() {
   finCotizacion = 0;
 }
 
+// TODO A6: reiniciar las cuatro cifras de la cotización y desactivar Confirmar.
+function vaciarResumenCotizacion() {
+  $("#subtotal").text("—");
+  $("#descuento").text("—");
+  $("#recargo").text("—");
+  $("#total").text("—");
+  $("#razonDescuento").text("La política de descuento aparecerá al cotizar.");
+  $("#temporizador").text("-- s");
+  totalPendiente = 0;
+  $("#confirmar").prop("disabled", true);
+}
+
