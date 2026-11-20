@@ -91,3 +91,11 @@ function construirReferencia(identificador, contador) {
   padStart(4, "0")}`;
 }
 
+// TODO M6: formatear 12345 céntimos como "123,45 €".
+function euros(centimos) {
+  const signo = centimos < 0 ? "-" : "";
+  const abs = Math.abs(centimos);
+  const parteEntera = Math.floor(abs / 100);
+  const parteCentimos = String(abs % 100).padStart(2, "0");
+  return `${signo}${parteEntera},${parteCentimos} €`;
+}
